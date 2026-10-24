@@ -131,6 +131,23 @@
   }
   .hero-media .img-ph { max-width: 440px; aspect-ratio: 4 / 5; }
 
+  /* ---------- Faixa animada ---------- */
+  .marquee {
+    overflow: hidden; background: var(--gold); color: #000;
+    border-top: 1px solid var(--gold-light); border-bottom: 1px solid var(--gold-light);
+    box-shadow: 0 0 40px rgba(var(--gold-rgb), .25);
+  }
+  .marquee-track { display: flex; width: max-content; animation: marquee 30s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee-group { display: flex; flex-shrink: 0; }
+  .marquee-group span {
+    display: flex; align-items: center; gap: 28px; padding: 16px 14px 16px 28px; white-space: nowrap;
+    font-size: 14px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+  }
+  .marquee-group span::after { content: "✦"; font-size: 14px; opacity: .7; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
   /* ---------- Vídeo ---------- */
   .video { background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,0)), var(--bg); }
   .video-label {
@@ -299,6 +316,28 @@
       </div>
     </div>
   </header>
+
+  <!-- ===================== FAIXA ANIMADA ===================== -->
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="marquee-group">
+        <span>Diagnóstico 360°</span>
+        <span>Análise completa do seu perfil bancário</span>
+        <span>Relatório personalizado</span>
+        <span>Plano de ação</span>
+        <span>De R$ 297 por R$ 69,90</span>
+        <span>Descubra o que trava seu crédito</span>
+      </div>
+      <div class="marquee-group" aria-hidden="true">
+        <span>Diagnóstico 360°</span>
+        <span>Análise completa do seu perfil bancário</span>
+        <span>Relatório personalizado</span>
+        <span>Plano de ação</span>
+        <span>De R$ 297 por R$ 69,90</span>
+        <span>Descubra o que trava seu crédito</span>
+      </div>
+    </div>
+  </div>
 
   <!-- ===================== VÍDEO ===================== -->
   <section class="video">
