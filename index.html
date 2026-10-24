@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Diagnóstico 360° | Conecta Cred</title>
+<meta name="description" content="[DESCRIÇÃO CURTA PARA O GOOGLE]" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    /* Cores — troque aqui para mudar a página inteira */
+    --primary: #B8FF1F;          /* verde neon */
+    --primary-hover: #CCFF5C;
+    --primary-rgb: 184, 255, 31;
+    --gold: #F2C14E;             /* dourado — títulos e detalhes */
+    --gold-light: #FFE08A;
+    --gold-rgb: 242, 193, 78;
+    --bg: #000000;               /* preto */
+    --surface-1: #121212;
+    --surface-2: #050505;
+    --text: #FFFFFF;
+    --text-on-primary: #000000;
+    --alert: #FF3B6B;            /* rosa/vermelho vivo */
+    --pill: #F2F4F5;
+
+    --text-85: rgba(255,255,255,.85);
+    --text-75: rgba(255,255,255,.75);
+    --text-65: rgba(255,255,255,.65);
+    --border: rgba(255,255,255,.08);
+    --glass: rgba(255,255,255,.06);
+    --gold-12: rgba(var(--gold-rgb), .12);
+    --gold-70: rgba(var(--gold-rgb), .7);
+    --glow: 0 0 0 1px rgba(var(--gold-rgb), .3), 0 0 18px rgba(var(--gold-rgb), .2);
+    --shadow-cta: 0 10px 30px rgba(var(--primary-rgb), .4);
+
+    --radius-btn: 12px;
+    --radius-card: 14px;
+    --radius-box: 16px;
+    --radius-offer: 20px;
+    --container: 1140px;
+    --ease: .25s ease;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 400 16px/1.6 "Poppins", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  strong { font-weight: 600; }
+  .hl { color: var(--gold); }
+  h1, h2 {
+    color: var(--gold);
+    background: linear-gradient(90deg, var(--gold-light), var(--gold) 55%, #E0A030);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  h1 .hl, h2 .hl { color: inherit; font-weight: 700; }
+
+  .container { width: min(100%, var(--container)); margin: 0 auto; padding: 0 20px; }
+  section { padding: 96px 0; }
+  .stack { display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center; }
+
+  h1 { font-size: 46px; font-weight: 600; line-height: 1.12; letter-spacing: -.5px; }
+  h2 { font-size: 40px; font-weight: 500; line-height: 1.2; letter-spacing: -.3px; }
+  .sub { max-width: 720px; color: var(--text-85); }
+
+  .eyebrow {
+    display: inline-block; padding: 6px 16px; border-radius: 999px;
+    background: var(--gold-12); color: var(--gold);
+    font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* ---------- Botão ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 18px 40px; border-radius: var(--radius-btn);
+    background: var(--primary); color: var(--text-on-primary);
+    font: 600 15px/1.35 "Poppins", sans-serif; text-transform: uppercase; letter-spacing: .3px; text-align: center;
+    border: 0; cursor: pointer;
+    transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+  }
+  .btn:hover { background: var(--primary-hover); transform: translateY(-2px); box-shadow: var(--shadow-cta); }
+  .btn.full { width: 100%; }
+  .btn .nw { white-space: nowrap; }
+  .btn .arrow { transition: transform var(--ease); }
+  .btn:hover .arrow { transform: translateX(3px); }
+  .secure { font-size: 12px; color: var(--text-75); display: flex; align-items: center; gap: 6px; }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: 80px 0 96px; min-height: 760px; display: flex; align-items: center; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; width: 720px; height: 720px; right: -160px; top: -120px;
+    background: radial-gradient(circle, rgba(var(--gold-rgb), .22), transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner { display: flex; align-items: center; gap: 48px; position: relative; }
+  .hero-text { flex: 0 1 560px; display: flex; flex-direction: column; gap: 22px; }
+  .logo-ph {
+    height: 56px; width: 220px; border-radius: 10px;
+    border: 1.5px dashed rgba(255,255,255,.25); color: var(--text-65);
+    display: grid; place-items: center; font-size: 13px;
+  }
+  .brand {
+    align-self: flex-start; padding: 10px 20px; border-radius: 999px;
+    border: 1px solid rgba(var(--gold-rgb), .35); background: var(--gold-12);
+    font-size: 15px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .hero h1 { font-size: 42px; text-transform: uppercase; }
+  .hero-text p { color: var(--text-85); }
+  .price-pill {
+    display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+    padding: 12px 26px; border-radius: 999px; background: var(--pill);
+    font-size: 16px; text-transform: uppercase; letter-spacing: .8px;
+  }
+  .price-pill .old { color: var(--alert); font-weight: 600; text-decoration: line-through; }
+  .price-pill .new { color: var(--text-on-primary); font-weight: 800; }
+  .hero-media { flex: 1; display: flex; justify-content: center; }
+
+  /* Placeholder de imagem genérico */
+  .img-ph {
+    width: 100%; border-radius: 20px; border: 1.5px dashed rgba(255,255,255,.2);
+    background: linear-gradient(160deg, rgba(var(--gold-rgb), .10), rgba(255,255,255,.02));
+    display: grid; place-items: center; color: var(--text-65); font-size: 14px; text-align: center; padding: 20px;
+  }
+  .hero-media .img-ph { max-width: 440px; aspect-ratio: 4 / 5; }
+
+  /* ---------- Vídeo ---------- */
+  .video { background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,0)), var(--bg); }
+  .video-label {
+    padding: 8px 18px; border-radius: 999px; background: var(--glass); border: 1px solid var(--border);
+    font-size: 14px; color: var(--text-85);
+  }
+  .player {
+    width: 100%; aspect-ratio: 16 / 9; border-radius: 20px; overflow: hidden;
+    border: 1px solid var(--border); background: #000; position: relative;
+    display: grid; place-items: center;
+    box-shadow: 0 0 0 1px rgba(var(--gold-rgb), .15), 0 30px 80px rgba(var(--gold-rgb), .12);
+  }
+  .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .play {
+    width: 84px; height: 84px; border-radius: 50%; background: var(--primary);
+    display: grid; place-items: center; box-shadow: var(--shadow-cta);
+  }
+  .play::after {
+    content: ""; margin-left: 6px;
+    border-left: 24px solid var(--text-on-primary); border-top: 15px solid transparent; border-bottom: 15px solid transparent;
+  }
+
+  /* ---------- Cards / itens ---------- */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 28px; width: 100%; max-width: 1024px; }
+  .list { display: flex; flex-direction: column; gap: 14px; width: 100%; max-width: 820px; }
+  .list.narrow { max-width: 760px; }
+  .item {
+    display: flex; align-items: center; gap: 14px; min-height: 64px; padding: 18px 24px;
+    border: 1px solid var(--border); border-radius: var(--radius-card);
+    font-size: 15px; line-height: 1.5; text-align: left;
+    transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+  }
+  .item:hover { border-color: var(--gold-70); box-shadow: var(--glow); transform: translateY(-1px); }
+  .check {
+    flex-shrink: 0; width: 23px; height: 23px; border: 2px solid var(--gold); border-radius: 5px;
+    display: grid; place-items: center;
+  }
+  .check::after {
+    content: ""; width: 9px; height: 5px; margin-top: -2px;
+    border-left: 2px solid var(--gold); border-bottom: 2px solid var(--gold); transform: rotate(-45deg);
+  }
+  .step {
+    flex-shrink: 0; width: 30px; height: 30px; border: 2px solid var(--gold); border-radius: 8px;
+    display: grid; place-items: center; color: var(--gold); font-size: 14px; font-weight: 600;
+  }
+
+  /* Blocos com ícone (grade 2 colunas, também no celular) */
+  .tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; width: 100%; max-width: 820px; }
+  .tile {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+    min-height: 170px; padding: 28px 20px; text-align: center;
+    background: rgba(255,255,255,.035); border: 1px solid var(--border); border-radius: 20px;
+    font-size: 17px; font-weight: 500; line-height: 1.35;
+    transition: border-color var(--ease), box-shadow var(--ease), transform var(--ease);
+  }
+  .tile:hover { border-color: var(--gold-70); box-shadow: var(--glow); transform: translateY(-2px); }
+  .tile svg {
+    width: 30px; height: 30px; fill: none; stroke: var(--gold);
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+
+  /* ---------- Comparativo (imagem + texto) ---------- */
+  .split { display: flex; align-items: center; gap: 56px; }
+  .split > * { flex: 1; }
+  .split .img-ph { aspect-ratio: 1 / 1; }
+  .split-text { display: flex; flex-direction: column; gap: 20px; text-align: left; }
+  .split-text p { color: var(--text-85); }
+  .box {
+    border: 1px solid var(--border); border-radius: var(--radius-box); padding: 26px 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .box-row { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; line-height: 1.5; }
+  .box-row .arr { color: var(--gold); font-weight: 600; }
+
+  /* ---------- Card de oferta ---------- */
+  .offer {
+    width: 100%; max-width: 520px; margin: 0 auto; padding: 44px 36px;
+    border-radius: var(--radius-offer); border: 1px solid rgba(var(--gold-rgb), .35);
+    background: linear-gradient(180deg, var(--surface-1) 0%, var(--surface-2) 100%);
+    box-shadow: 0 20px 40px rgba(0,0,0,.35), 0 0 60px rgba(var(--gold-rgb), .12);
+    display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;
+  }
+  .offer h2 { font-size: 30px; font-weight: 600; }
+  .offer > p { color: var(--text-85); font-size: 15px; }
+  .offer .divider { width: 100%; border: 0; border-top: 1px solid rgba(var(--gold-rgb), .25); }
+  .offer ul { list-style: none; width: 100%; display: flex; flex-direction: column; gap: 12px; margin: 4px 0; }
+  .offer li { display: flex; gap: 12px; align-items: center; text-align: left; font-size: 15px; }
+  .offer .check { width: 20px; height: 20px; }
+  .price-old { color: var(--alert); text-decoration: line-through; font-weight: 600; }
+  .price-big { font-size: 76px; font-weight: 800; line-height: 1; color: var(--gold); letter-spacing: -2px; }
+  .price-big small { font-size: 28px; font-weight: 600; letter-spacing: 0; margin-right: 4px; }
+  .installments { font-size: 14px; color: var(--text-75); }
+
+  /* ---------- FAQ ---------- */
+  .faq { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 900px; }
+  .faq-item { border: 1px solid var(--border); border-radius: var(--radius-card); transition: border-color var(--ease), box-shadow var(--ease); text-align: left; }
+  .faq-item:hover, .faq-item.active { border-color: var(--gold-70); box-shadow: var(--glow); }
+  .faq-q {
+    width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    padding: 20px 24px; background: none; border: 0; color: var(--text); cursor: pointer;
+    font: 500 16px/1.5 "Poppins", sans-serif; text-align: left;
+  }
+  .faq-icon {
+    flex-shrink: 0; width: 12px; height: 12px; margin-top: -6px;
+    border-right: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+    transform: rotate(45deg); transition: transform var(--ease), margin var(--ease);
+  }
+  .faq-item.active .faq-icon { transform: rotate(-135deg); margin-top: 6px; }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+  .faq-a p { padding: 0 24px 24px; font-size: 15px; line-height: 1.6; opacity: .9; }
+
+  /* ---------- Rodapé ---------- */
+  footer { border-top: 1px solid var(--border); padding: 40px 0 48px; }
+  footer .stack { gap: 10px; max-width: 800px; margin: 0 auto; }
+  footer p { font-size: 11.5px; color: var(--text-65); }
+
+  /* ---------- Responsivo ---------- */
+  @media (max-width: 991px) {
+    .hero-inner, .split { flex-direction: column; }
+    .hero { min-height: 0; padding-top: 56px; }
+    .hero-text { flex-basis: auto; width: 100%; align-items: center; text-align: center; }
+    .brand { align-self: center; }
+    .hero-media { order: -1; width: 100%; }
+    .hero-media .img-ph { max-width: 320px; }
+    .split-text { text-align: center; align-items: center; }
+    .box { text-align: left; }
+  }
+  @media (max-width: 767px) {
+    section { padding: 64px 0; }
+    .container { padding: 0 16px; }
+    h1, .hero h1 { font-size: 28px; }
+    h2 { font-size: 28px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .tiles { gap: 12px; }
+    .tile { min-height: 140px; padding: 22px 12px; font-size: 14.5px; gap: 12px; border-radius: 16px; }
+    .tile svg { width: 26px; height: 26px; }
+    .btn { padding: 16px 20px; width: 100%; font-size: 14px; }
+    .btn .arrow { display: none; }
+    .price-pill { font-size: 14px; padding: 12px 18px; }
+    .offer { padding: 36px 22px; }
+    .offer h2 { font-size: 24px; }
+    .price-big { font-size: 60px; }
+    .faq-q { padding: 18px 20px; font-size: 15px; }
+    .faq-a p { font-size: 14px; padding: 0 20px 22px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="brand">Diagnóstico <span class="hl">360°</span></div>
+        <h1>Descubra agora o que está <span class="hl">travando seu crédito</span> e o que fazer para mudar esse cenário!</h1>
+        <p>Com o Diagnóstico 360°, descubra como os bancos avaliam seu perfil, o que pode estar travando seu crédito e quais ações tomar para aumentar suas chances de aprovação bancária.</p>
+        <div class="price-pill">
+          <span class="old">De R$ 297,00</span>
+          <span class="new">por R$ 69,90</span>
+        </div>
+        <a href="#oferta" class="btn full"><span>Garantir agora <span class="nw">meu Diagnóstico 360°</span></span> <span class="arrow">→</span></a>
+        <span class="secure">🔒 [Compra 100% segura]</span>
+      </div>
+      <div class="hero-media">
+        <div class="img-ph">[FOTO DO ESPECIALISTA / PRODUTO]</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== VÍDEO ===================== -->
+  <section class="video">
+    <div class="container stack">
+      <span class="video-label">▶ [Assista o vídeo antes de continuar]</span>
+      <div class="player">
+        <!-- Cole aqui o embed do vídeo (YouTube/Vimeo/Panda) e remova o .play -->
+        <div class="play"></div>
+      </div>
+      <a href="#oferta" class="btn" style="margin-top:16px"><span>Garantir agora <span class="nw">meu Diagnóstico 360°</span></span> <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== O QUE VOCÊ VAI DESCOBRIR ===================== -->
+  <section>
+    <div class="container stack">
+      <h2>O que você vai descobrir com o <span class="hl">Diagnóstico 360°</span></h2>
+      <div class="tiles" style="margin-top:20px">
+        <div class="tile">
+          <svg viewBox="0 0 24 24"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
+          Dívidas e exposições financeiras
+        </div>
+        <div class="tile">
+          <svg viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+          Classificação de risco bancário
+        </div>
+        <div class="tile">
+          <svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+          Comprometimento da renda
+        </div>
+        <div class="tile">
+          <svg viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M8 6h8"/><path d="M16 14v4"/><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"/></svg>
+          Capacidade de pagamento
+        </div>
+        <div class="tile">
+          <svg viewBox="0 0 24 24"><path d="M3 22h18"/><path d="M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M12 2l8 5H4z"/></svg>
+          Potencial de crédito
+        </div>
+        <div class="tile">
+          <svg viewBox="0 0 24 24"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+          Renda presumida pelos bancos
+        </div>
+        <div class="tile">
+          <svg viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+          Rating bancário
+        </div>
+        <div class="tile">
+          <svg viewBox="0 0 24 24"><path d="M22 7l-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/></svg>
+          Chances de aprovação
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PARA QUEM É ===================== -->
+  <section>
+    <div class="container stack">
+      <h2 class="hl">Para quem é o Diagnóstico 360°?</h2>
+      <div class="list narrow" style="margin-top:20px">
+        <div class="item"><span class="check"></span>Quem pretende solicitar empréstimos, financiamentos ou aumentar seus limites.</div>
+        <div class="item"><span class="check"></span>Pessoas que enfrentam dificuldades para conseguir aprovação nas instituições financeiras.</div>
+        <div class="item"><span class="check"></span>Quem deseja fortalecer seu perfil bancário e melhorar suas oportunidades de crédito.</div>
+      </div>
+      <a href="#oferta" class="btn" style="margin-top:28px"><span>Garantir agora <span class="nw">meu Diagnóstico 360°</span></span> <span class="arrow">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== OFERTA ===================== -->
+  <section id="oferta">
+    <div class="container">
+      <div class="offer">
+        <span class="eyebrow">Conecta Cred</span>
+        <h2>O que você recebe no <span class="hl">Diagnóstico 360°?</span></h2>
+        <p>Uma análise completa para entender seu perfil bancário e identificar o que pode estar dificultando seu crédito.</p>
+        <hr class="divider" />
+        <ul>
+          <li><span class="check"></span>Análise do perfil de risco bancário</li>
+          <li><span class="check"></span>Mapeamento de dívidas, restrições e protestos</li>
+          <li><span class="check"></span>Avaliação do comprometimento da renda</li>
+          <li><span class="check"></span>Análise da capacidade de pagamento</li>
+          <li><span class="check"></span>Avaliação do potencial de crédito</li>
+          <li><span class="check"></span>Histórico de operações no SCR/Bacen</li>
+          <li><span class="check"></span>Análise de renda declarada e presumida</li>
+          <li><span class="check"></span>Identificação de obstáculos à aprovação</li>
+          <li><span class="check"></span>Estratégias para melhorar seu perfil bancário</li>
+          <li><span class="check"></span>Relatório personalizado com plano de ação</li>
+        </ul>
+        <hr class="divider" />
+        <span class="price-old">De R$ 297,00</span>
+        <div class="price-big"><small>R$</small>69,90</div>
+        <span class="installments">ou [12x de R$ 0,00]</span>
+        <a href="[LINK DO CHECKOUT]" class="btn full"><span>Garantir agora <span class="nw">meu Diagnóstico 360°</span></span> <span class="arrow">→</span></a>
+        <span class="secure">🔒 [Compra 100% segura]</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section>
+    <div class="container stack">
+      <h2>Perguntas <span class="hl">frequentes</span></h2>
+      <div class="faq" style="margin-top:20px">
+        <div class="faq-item">
+          <button class="faq-q">O que é o Diagnóstico 360°?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>É uma análise completa do seu perfil bancário. Ela mostra como os bancos enxergam você, o que pode estar travando seu crédito e quais ações tomar para aumentar suas chances de aprovação.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Para quem o Diagnóstico 360° é indicado?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Para quem pretende solicitar empréstimos, financiamentos ou aumento de limite, para quem vem tendo dificuldade de aprovação nas instituições financeiras e para quem quer fortalecer o perfil bancário e melhorar as oportunidades de crédito.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">O que exatamente eu vou receber?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Um relatório personalizado com plano de ação. Ele cobre dívidas e exposições financeiras, classificação de risco bancário, comprometimento da renda, capacidade de pagamento, potencial de crédito, renda presumida pelos bancos, rating bancário e suas chances de aprovação.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Qual a diferença entre rating bancário e score?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>O score é uma pontuação calculada pelos birôs de crédito, como Serasa e SPC. O rating bancário é a classificação de risco que cada banco faz internamente, considerando seu histórico no SCR/Bacen, sua renda e seu relacionamento com a instituição. Por isso é possível ter um score alto e mesmo assim ter o crédito negado.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">O diagnóstico garante a aprovação do meu crédito?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Não. A decisão final é sempre do banco. O Diagnóstico 360° identifica o que está atrapalhando sua aprovação e mostra o caminho para corrigir, aumentando suas chances de conseguir crédito.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Como e em quanto tempo eu recebo o diagnóstico?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>[Explique aqui como o diagnóstico é entregue (e-mail, WhatsApp, área de membros) e o prazo de entrega.]</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">A compra é segura?<span class="faq-icon"></span></button>
+          <div class="faq-a"><p>Sim. O pagamento é feito em ambiente seguro, e seus dados são usados somente para a elaboração do seu diagnóstico.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer>
+    <div class="container stack">
+      <p>[Nome da empresa] — CNPJ [00.000.000/0000-00]</p>
+      <p>[Aviso legal / isenção de responsabilidade]</p>
+      <p>© [2026] Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+<script>
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      const open = item.classList.toggle('active');
+      const a = item.querySelector('.faq-a');
+      a.style.maxHeight = open ? a.scrollHeight + 'px' : 0;
+    });
+  });
+</script>
+</body>
+</html>
