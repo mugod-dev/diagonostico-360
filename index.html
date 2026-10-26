@@ -11,25 +11,23 @@
 <style>
   :root {
     /* Cores — troque aqui para mudar a página inteira */
-    --primary: #E3262E;          /* vermelho — botões */
-    --primary-hover: #FF3D44;
-    --primary-rgb: 227, 38, 46;
-    --accent: #E3262E;           /* vermelho — destaques e detalhes */
-    --accent-light: #FF5A60;
-    --accent-rgb: 227, 38, 46;
-    --cream: #F3EDE4;            /* creme — títulos */
-    --sage: #9DB5AB;             /* verde-sálvia — apoio */
-    --bg: #0A1311;               /* verde-petróleo quase preto */
-    --surface-1: #12201D;
-    --surface-2: #08100E;
-    --text: #F3EDE4;
-    --text-on-primary: #F3EDE4;
-    --alert: #E3262E;
-    --pill: #F3EDE4;
+    --primary: #B8FF1F;          /* verde neon — botões */
+    --primary-hover: #CCFF5C;
+    --primary-rgb: 184, 255, 31;
+    --accent: #F2C14E;           /* dourado — títulos e detalhes */
+    --accent-light: #FFE08A;
+    --accent-rgb: 242, 193, 78;
+    --bg: #000000;               /* preto */
+    --surface-1: #121212;
+    --surface-2: #050505;
+    --text: #FFFFFF;
+    --text-on-primary: #000000;
+    --alert: #FF3B6B;            /* rosa/vermelho vivo */
+    --pill: #F2F4F5;
 
-    --text-85: rgba(243,237,228,.85);
-    --text-75: rgba(243,237,228,.75);
-    --text-65: rgba(243,237,228,.65);
+    --text-85: rgba(255,255,255,.85);
+    --text-75: rgba(255,255,255,.75);
+    --text-65: rgba(255,255,255,.65);
     --border: rgba(255,255,255,.08);
     --glass: rgba(255,255,255,.06);
     --accent-12: rgba(var(--accent-rgb), .12);
@@ -58,8 +56,12 @@
   a { color: inherit; text-decoration: none; }
   strong { font-weight: 600; }
   .hl { color: var(--accent); }
-  h1, h2 { color: var(--cream); }
-  h1 .hl, h2 .hl, h2.hl { color: var(--accent); }
+  h1, h2 {
+    color: var(--accent);
+    background: linear-gradient(90deg, var(--accent-light), var(--accent) 55%, #E0A030);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  h1 .hl, h2 .hl { color: inherit; font-weight: 700; }
 
   .container { width: min(100%, var(--container)); margin: 0 auto; padding: 0 20px; }
   section { padding: 96px 0; }
@@ -131,7 +133,7 @@
 
   /* ---------- Faixa animada ---------- */
   .marquee {
-    overflow: hidden; background: var(--accent); color: var(--cream);
+    overflow: hidden; background: var(--accent); color: #000;
     border-top: 1px solid var(--accent-light); border-bottom: 1px solid var(--accent-light);
     box-shadow: 0 0 40px rgba(var(--accent-rgb), .25);
   }
@@ -235,7 +237,7 @@
   .offer li { display: flex; gap: 12px; align-items: center; text-align: left; font-size: 15px; }
   .offer .check { width: 20px; height: 20px; }
   .price-old { color: var(--alert); text-decoration: line-through; font-weight: 600; }
-  .price-big { font-size: 76px; font-weight: 800; line-height: 1; color: var(--cream); letter-spacing: -2px; }
+  .price-big { font-size: 76px; font-weight: 800; line-height: 1; color: var(--accent); letter-spacing: -2px; }
   .price-big small { font-size: 28px; font-weight: 600; letter-spacing: 0; margin-right: 4px; }
   .installments { font-size: 14px; color: var(--text-75); }
 
